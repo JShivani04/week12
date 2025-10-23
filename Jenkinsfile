@@ -1,6 +1,9 @@
 pipeline {
     agent any
-   
+   environment {
+        // Path to your kubeconfig
+        KUBECONFIG = "C:\\Users\\SHIVANI\\.kube\\config"
+    }
     stages {
 
         stage('Run Selenium Tests with pytest') {
