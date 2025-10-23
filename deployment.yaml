@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-app-deployment
+  labels:
+    app: registration-app
+spec:
+  replicas: 2                     # Number of pods to run
+  selector:
+    matchLabels:
+      app: registration-app
+  template:
+    metadata:
+      labels:
+        app: registration-app
+    spec:
+      containers:
+        - name: registration-app-container
+          image: registration-app:latest     # Use your built image name or Docker Hub repo
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
